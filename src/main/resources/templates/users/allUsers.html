@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Users</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            width: fit-content;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            border-width: 2px;
+            padding: 4px 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Users List</h1>
+    <table th:border="1">
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>age</th>
+            <th>email</th>
+            <th>city</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:utext="${user.getId()}">...</td>
+            <td th:utext="${user.getName()}">...</td>
+            <td th:utext="${user.getSurname()}">...</td>
+            <td th:utext="${user.getAge()}">...</td>
+            <td th:utext="${user.getEmail()}">...</td>
+            <td th:utext="${user.getCity()}">...</td>
+            <td>
+                <a th:href="@{/users/editUser(id=${user.getId()})}" class="btn btn-primary">
+                    <button>Edit</button>
+                </a>
+            </td>
+            <td>
+                <form th:method="DELETE" th:action="@{/users/deleteUser(id=${user.getId()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+<br>
+<br>
+
+<form th:action="@{users/newUser}">
+    <button type="submit" class="btn btn-primary">Create a new user</button>
+</form>
+
+</body>
+</html>

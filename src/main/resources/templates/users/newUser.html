@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>New user</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/users}" th:object="${user}">
+    <div style="display: grid; gap: 16px; margin-bottom: 16px">
+        <div style="display: grid; grid-template-columns: 100px 300px 300px; gap: 16px;  align-items: center">
+            <label for="name">Enter name: </label>
+            <input th:type="text" th:field="*{name}" id="name"/>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 100px 300px 300px; gap: 16px;  align-items: center">
+            <label for="surname">Enter surname: </label>
+            <input th:type="text" th:field="*{surname}" id="surname"/>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 100px 300px 300px; gap: 16px;  align-items: center">
+            <label for="age">Enter age: </label>
+            <input th:type="number" th:field="*{age}" id="age" min="0" value=" " max="120"/>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 100px 300px 300px; gap: 16px;  align-items: center">
+            <label for="email">Enter email: </label>
+            <input th:type="text" th:field="*{email}" id="email"/>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 100px 300px 300px; gap: 16px;  align-items: center">
+            <label for="city">Enter city: </label>
+            <input th:type="text" th:field="*{city}" id="city"/>
+        </div>
+    </div>
+
+    <input type="submit" value="Create"/>
+
+</form>
+
+</body>
+</html>
